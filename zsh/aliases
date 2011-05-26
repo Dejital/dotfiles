@@ -18,6 +18,9 @@ then
   alias la='gls -A --color'
 fi
 
+# Vim
+alias vi='vim'
+
 # Mvim
 alias v='mvim'
 alias vf='mvim -f'
