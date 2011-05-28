@@ -6,5 +6,6 @@ rtorrent.rc
 .*.swp
 *.bak
 vim/bundle
+vim/spell
 muttrc
 mutt
