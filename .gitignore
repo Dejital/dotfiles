@@ -1,5 +1,6 @@
 .DS_Store
 .svn
+.Private
 vim/.netrwhist
 rtorrent.rc
 *~
@@ -7,5 +8,4 @@ rtorrent.rc
 *.bak
 vim/bundle
 vim/spell
-muttrc
 mutt
