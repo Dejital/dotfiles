@@ -1,4 +1,7 @@
 = Sergey Kutserubov's Dot Files
 
-These are the config files I use on my Mac OSX machine. It is worth noting that these dot files are primarily forked from Ryan Bates' repo. As of this point, I have heavily modified only files relating to vim. 
+These are the config files I use on my Mac OS X machine. Primarily, this is a fork of ryanb's dotfiles. However, I have recently begun using oh-my-zsh.
 
+= Installation
+
+Git clone me, then rake install.
