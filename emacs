@@ -118,7 +118,7 @@
          (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
  '(org-remember-store-without-prompt t)
  '(org-remember-templates
-   (quote ((116 "* TODO %?\n  %u" "~/Dropbox/todo.txt" "Tasks"))))
+   (quote ((116 "* TODO %?\n  :CREATED: %u" "~/Dropbox/todo.txt" "Tasks"))))
  '(remember-annotation-functions (quote (org-remember-annotation)))
  '(remember-handler-functions (quote (org-remember-handler))))
   ;; org-mode }}}
