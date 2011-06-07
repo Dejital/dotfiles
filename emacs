@@ -121,6 +121,7 @@
    (quote ((116 "* TODO %?\n  %u" "~/Dropbox/todo.txt" "Tasks"))))
  '(remember-annotation-functions (quote (org-remember-annotation)))
  '(remember-handler-functions (quote (org-remember-handler))))
+  ;; org-mode }}}
 
   ;; Org-mode latex support
 (require 'org-latex)
@@ -131,4 +132,3 @@
                "\\documentclass{article}"
                ("\\section{%s}" . "\\section*{%s}")))  
 (setq org-latex-to-pdf-process '("texi2dvi --pdf --clean --verbose --batch %f"))
-  ;; org-mode }}}
