@@ -1,0 +1,8 @@
+# === OPTIONS ===
+# Appearance
+OPTIONS=color,hilite_pet,DECgraphics,time
+# Gameplay
+OPTIONS=!autopickup,autodig
+OPTIONS=gender:male,disclose:+i+a+v+g+c
+# Names
+OPTIONS=catname:Sebastian,dogname:Charlie,horsename:Howard
