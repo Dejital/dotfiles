@@ -1,3 +1,6 @@
+# Keep my username/password elsewhere
+source ~/.Private/muttrc
+
 set folder = "imaps://imap.gmail.com:993"
 set spoolfile = "+INBOX"
 set postponed="+[Gmail]/Drafts"
@@ -47,6 +50,8 @@ macro pager cb |urlview 'call urlview to extract URLs out of a message'
 # My Editor
 set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp"'
 
-# Keep my username/password elsewhere
-source ~/.Private/muttrc
-
+# Integrate goobook for Google contacts. From:
+# http://castrojo.wordpress.com/2009/01/28/gmail-contacts-with-mutt
+set query_command="goobook query '%s'"
+bind editor <Tab> complete-query
+bind editor ^T complete
