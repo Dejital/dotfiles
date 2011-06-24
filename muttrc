@@ -20,6 +20,8 @@ set move = no
 set mail_check=90
 set timeout=15
 
+set sleep_time=0
+
 # Keybindings from:
 # http://crunchbanglinux.org/wiki/howto/howto_setup_mutt_with_gmail_imap
 bind editor <space> noop
@@ -27,6 +29,7 @@ macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
 macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+macro index gr "<change-folder>=Rockhurst<enter>" "Go to Rockhurst filter"
 
 # Header stuff
 ignore "Authentication-Results:"
