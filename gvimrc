@@ -5,7 +5,7 @@ set lines=40
 set columns=82
   
 " Solarized color scheme for vim and gvim
-set background=light
+set background=dark
 colorscheme solarized 
 call togglebg#map("<leader>bg")
 
@@ -31,7 +31,7 @@ endfunction
 
 " font-style and font-size
 
-set guifont=inconsolata:h26
+set guifont=DejaVu\ Sans\ Mono:h24
 
 " get rid of left scrollbar when splitting vertically
 set go-=l
