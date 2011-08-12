@@ -1,12 +1,9 @@
-# Keep my username/password elsewhere
-source ~/.Private/muttrc
+source ~/.mutt/mailboxes
+folder-hook GMail set from="sergey@sergeyk.com"
+set mbox_type=Maildir
+set folder=$HOME/Mail
+set spoolfile=+GMail/INBOX
 
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
-set postponed="+[Gmail]/Drafts"
-
-set header_cache=~/.mutt/cache/headers
-set message_cachedir=~/.mutt/cache/bodies
 set certificate_file=~/.mutt/certificates
 
 # Alias stuff
@@ -17,30 +14,14 @@ source $alias_file
 
 set move = no
 
-set mail_check=90
-set timeout=15
-
-set sleep_time=0
-
 # Keybindings from:
 # http://crunchbanglinux.org/wiki/howto/howto_setup_mutt_with_gmail_imap
 bind editor <space> noop
-macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
-macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
-macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
-macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
-macro index gr "<change-folder>=Rockhurst<enter>" "Go to Rockhurst filter"
-
-# Header stuff
-ignore "Authentication-Results:"
-ignore "DomainKey-Signature:"
-ignore "DKIM-Signature:"
-hdr_order Date From To Cc
-
-ignore *
-unignore from: date subject to cc
-unignore x-mailing-list: posted-to:
-unignore x-mailer:
+macro index gi "<change-folder>=GMail/INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=GMail/archive<enter>" "Go to all mail"
+macro index gs "<change-folder>=GMail/sent<enter>" "Go to Sent Mail"
+macro index gd "<change-folder>=GMail/drafts<enter>" "Go to drafts"
+macro index gr "<change-folder>=GMail/Rockhurst<enter>" "Go to Rockhurst filter"
 
 # For better looks
 set markers=no # don't put '+' at the beginning of wrapped lines
@@ -58,9 +39,3 @@ macro pager cb |urlview 'call urlview to extract URLs out of a message'
 
 # My Editor
 set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp"'
-
-# Integrate goobook for Google contacts. From:
-# http://castrojo.wordpress.com/2009/01/28/gmail-contacts-with-mutt
-#set query_command="goobook query '%s'"
-#bind editor <Tab> complete-query
-#bind editor ^T complete
