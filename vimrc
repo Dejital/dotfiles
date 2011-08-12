@@ -95,8 +95,8 @@ nmap <silent> <leader>da :exec "1," . bufnr('$') . "bd"<cr>
 set hidden
 
 " Bind keyboard arrow keys to switch buffers
-inoremap <Up> <esc>:bprev<cr>                                                                                            
-inoremap <Down> <esc>:bnext<cr>
+"nmap <Up> <esc>:bprev<cr>                                                                                            
+map <Down> <esc>:bnext<cr>
 
 
 "-----------------------------------------------------------------------------
