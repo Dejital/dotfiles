@@ -15,11 +15,21 @@ filetype plugin indent on
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 "-----------------------------------------------------------------------------
-" Encoding and general usability
+" Styling
 "-----------------------------------------------------------------------------
+" Solarized color scheme for vim and gvim
+set background=dark
+colorscheme solarized 
+
+" Toggle dark and light with \bg
+call togglebg#map("<leader>bg")
 
 " 256 color terminal with iTerm
 set t_Co=256
+
+"-----------------------------------------------------------------------------
+" Encoding and general usability
+"-----------------------------------------------------------------------------
 
 nnoremap <Space> :
 
@@ -159,11 +169,6 @@ function! RelativeNumberToggle()
 endfunction
 " }}}
 
-" Display hidden characters (paragraph,eol) with \s
-"nmap <leader>s :set list!<CR>
-"set listchars=tab:▸\ ,eol:¬
-
-
 "-----------------------------------------------------------------------------
 " Compiling code
 "-----------------------------------------------------------------------------
@@ -171,7 +176,6 @@ endfunction
 " Compile Python with \p2 or \p3
 nmap <buffer> <leader>p2 :w<CR>:!/usr/bin/env python % <CR>
 nmap <buffer> <leader>p3 :w<CR>:!/usr/bin/env python3 % <CR>
-
 
 "-----------------------------------------------------------------------------
 " NERD Tree
@@ -185,14 +189,6 @@ nmap <F7> :NERDTreeToggle<CR>
 
 " Close the NERD Tree with Shift-F7
 nmap <S-F7> :NERDTreeClose<CR>
-
-
-
-"-----------------------------------------------------------------------------
-" Latex-Suite (which I no longer use)
-"-----------------------------------------------------------------------------
-"let g:Tex_ViewRule_pdf = '/Applications/Skim.app'
-
 
 "-----------------------------------------------------------------------------
 " Latex-Box
