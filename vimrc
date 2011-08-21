@@ -106,7 +106,20 @@ set hidden
 
 " Bind keyboard arrow keys to switch buffers
 "nmap <Up> <esc>:bprev<cr>                                                                                            
-map <Down> <esc>:bnext<cr>
+nmap <Down> <esc>:bnext<cr>
+
+" Split windows/multiple files
+" use <Ctrl>+s to split the current window
+nmap <C-S> <C-W>s
+" use <Ctrl>+j/<Ctrl>+k to move up/down through split windows
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+" use <Ctrl>+-/<Ctrl>+= to maximise/equalise the size of split windows
+nmap <C--> <C-W>_
+nmap <C-=> <C-W>=
+" use <Ctrl>+h/<Ctrl>+l to move back/forth through files:
+nmap <C-L> :next<CR>
+nmap <C-H> :prev<CR>
 
 
 "-----------------------------------------------------------------------------
