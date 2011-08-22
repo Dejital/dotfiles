@@ -8,79 +8,51 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" Mixed signals on this command, but it seems common enough to use
+syntax on
 filetype plugin indent on
-" Python stuff from
-" http://www.sontek.net/python-with-a-modular-ide-vim
-autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 "-----------------------------------------------------------------------------
 " Styling
 "-----------------------------------------------------------------------------
-" Solarized color scheme for vim and gvim
-set background=dark
-colorscheme solarized 
-
-" Toggle dark and light with \bg
-call togglebg#map("<leader>bg")
 
 " 256 color terminal with iTerm
 set t_Co=256
+
+" Solarized color scheme for vim and gvim
+colorscheme solarized 
+set background=dark
+
+" Toggle light and dark with \bg
+call togglebg#map("<leader>bg") 
 
 "-----------------------------------------------------------------------------
 " Encoding and general usability
 "-----------------------------------------------------------------------------
 
-nnoremap <Space> :
-
-" http://stevelosh.com/blog/2010/09/coming-home-to-vim/#important-vimrc-lines
 set encoding=utf-8
 set scrolloff=3
-set showmode
-set showcmd
-set wildmenu
-set wildmode=list:longest
 set visualbell
 set ttyfast
 set ruler
-set backspace=indent,eol,start
 
-" Something for latex-suite
-let g:tex_flavor='latex'
-
-set display=lastline
-
-" Line numbering
-set number
-set relativenumber
-
-" Vim window stuff
-set linebreak
-
+" Persistent undo
+if v:version >= 703
+  set undofile
+  set undodir=$HOME/.vim/tmp,/tmp
+endif
 
 "-----------------------------------------------------------------------------
 " Search, highlight, spelling, etc.
 "-----------------------------------------------------------------------------
 
 " Improved searching
-nnoremap / /\v
-vnoremap / /\v
 set ignorecase
 set smartcase
-
 set incsearch
-syntax on
-
-" Paragraph formatting stuff:
-set formatprg=par
 
 " Store temporary files in a central location
-set backupdir=~/.vim/vim-tmp,~/.tmp,~/tmp,~/var/tmp,/tmp
-set directory=~/.vim/vim-tmp,~/.tmp,~/tmp,~/var/tmp,/tmp
-
-
-" Omnifunction
-set omnifunc=syntaxcomplete#Complete
+set backupdir=~/.vim/tmp,~/.tmp,~/tmp,~/var/tmp,/tmp
+set directory=~/.vim/tmp,~/.tmp,~/tmp,~/var/tmp,/tmp
 
 " If a file has been changed outside of Vim, reload it inside of Vim
 set autoread
@@ -93,20 +65,12 @@ set autoindent
 set smartindent 
 set tabstop=2 shiftwidth=2 expandtab
 
-
 "-----------------------------------------------------------------------------
 " Buffers
 "-----------------------------------------------------------------------------
 
-" Delete all buffers with \da
-nmap <silent> <leader>da :exec "1," . bufnr('$') . "bd"<cr>
-
 " Let me switch buffers with unsaved changes
 set hidden
-
-" Bind keyboard arrow keys to switch buffers
-"nmap <Up> <esc>:bprev<cr>                                                                                            
-nmap <Down> <esc>:bnext<cr>
 
 " Split windows/multiple files
 " use <Ctrl>+s to split the current window
@@ -118,8 +82,8 @@ nmap <C-K> <C-W>k
 nmap <C--> <C-W>_
 nmap <C-=> <C-W>=
 " use <Ctrl>+h/<Ctrl>+l to move back/forth through files:
-nmap <C-L> :next<CR>
-nmap <C-H> :prev<CR>
+nmap <C-L> :bnext<CR>
+nmap <C-H> :bprev<CR>
 
 
 "-----------------------------------------------------------------------------
@@ -129,98 +93,66 @@ nmap <C-H> :prev<CR>
 set foldcolumn=0
 set foldmethod=marker "alternatives: indent, syntax, marker
 
-" Change what folded lines show (currently disabled)
-function! MyFoldText()
-    let nl = v:foldend - v:foldstart + 1
-    let comment = substitute(getline(v:foldstart),"^ *","",1)
-    let linetext = substitute(getline(v:foldstart+1),"^ *","",1)
-    let txt = '+ ' . linetext . ' : "' . comment . '" : length ' . nl
-    return txt
-endfunction
-" set foldtext=MyFoldText()
-
-" map <leader>mv :mkview<CR>
-" map <leader>lv :loadview<CR>
-
 "-----------------------------------------------------------------------------
 " Keymap stuff
 "-----------------------------------------------------------------------------
 
+nnoremap <Space> :
+
+" Go up and down screen lines instead of actual lines
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
-noremap  <buffer> <silent> 0 g0
-noremap  <buffer> <silent> $ g$
-set mouse=a
 
-" Keymappings for :e
-map <leader>ew :e <C-R>=expand("%:p:h")."/"<CR> 
-map <leader>es :sp <C-R>=expand("%:p:h")."/"<CR>
-map <leader>ev :vsp <C-R>=expand("%:p:h")."/"<CR>
-map <leader>et :tabe <C-R>=expand("%:p:h")."/"<CR>
+" Don't use Ex mode, use Q for formatting
+map Q gq
 
-" Map for omnicomplete
-inoremap <F8> <C-X><C-O>
+" Ctrl-E to switch between 2 last buffers
+nmap <C-E> :b#<CR>
 
 " Access .vimrc with \vi
 nmap <silent> <leader>vi :e $MYVIMRC<CR>
-nmap <silent> <leader>vh :e ~/Documents/References/vim.txt<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" Relative Number toggle (\rn) {{{
-nmap <silent> <leader>rn :call RelativeNumberToggle()<CR>
-function! RelativeNumberToggle()
-  if &number
-    echo "relativenumber ON"
-    setlocal relativenumber
-  else
-    if &relativenumber
-      echo "relativenumber OFF"
-      setlocal norelativenumber
-      setlocal number
+" Run current file if it has a shebang <F4> {{{
+" From: http://news.ycombinator.com/item?id=2908094
+function! <SID>CallInterpreter()
+    if match(getline(1), '^\#!') == 0
+        let l:interpreter = getline(1)[2:]
+        exec ("!".l:interpreter." %:p")
+    else
+        echohl ErrorMsg | echo "Err: No shebang present in file, canceling execution" | echohl None
     endif
-  endif
-endfunction
+endfun
+map <F4> :call <SID>CallInterpreter()<CR> 
+" }}}
+
+" Toggle line numbering modes \rn {{{
+" Default to relativenumber in newer vim, otherwise regular numbering
+" From: http://news.ycombinator.com/item?id=2908094
+if v:version >= 703
+    set relativenumber
+    let s:relativenumber = 0
+    function! <SID>ToggleRelativeNumber()
+        if s:relativenumber == 0
+            set number
+            let s:relativenumber = 1
+        elseif s:relativenumber == 1
+            set relativenumber
+            let s:relativenumber = 2
+        else
+            set norelativenumber
+            let s:relativenumber = 0
+        endif
+    endfunction
+    map <silent> <leader>rn :call <SID>ToggleRelativeNumber()<CR>
+else
+    set number
+endif
 " }}}
 
 "-----------------------------------------------------------------------------
-" Compiling code
+" Plug-ins
 "-----------------------------------------------------------------------------
-
-" Compile Python with \p2 or \p3
-nmap <buffer> <leader>p2 :w<CR>:!/usr/bin/env python % <CR>
-nmap <buffer> <leader>p3 :w<CR>:!/usr/bin/env python3 % <CR>
-
-"-----------------------------------------------------------------------------
-" NERD Tree
-"-----------------------------------------------------------------------------
-
-" Invoke NERD Tree with \nt
-nmap <leader>nt :NERDTree<CR>
 
 " Toggle the NERD Tree on an off with F7
 nmap <F7> :NERDTreeToggle<CR>
-
-" Close the NERD Tree with Shift-F7
-nmap <S-F7> :NERDTreeClose<CR>
-
-"-----------------------------------------------------------------------------
-" Latex-Box
-"-----------------------------------------------------------------------------
-
-" These don't work (for me, at least)
-" Use \la instead, from ftplugin/tex.vim
-let g:LatexBox_viewer = 'skim'
-"let g:LatexBox_latexmk_options = '-pvc'
-
-"-----------------------------------------------------------------------------
-" utl.vim
-" Plugin for handling hyperlinks
-"-----------------------------------------------------------------------------
-
-" Set how Vim opens hyperlinks
-let g:utl_cfg_hdl_scm_http_system = 'silent !open "%u"'
-
-" Open hyperlinks with \fo
-" Think "Firefox-open"
-noremap <leader>fo :Utl<CR>
-
