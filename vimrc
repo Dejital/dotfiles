@@ -32,13 +32,14 @@ call togglebg#map("<leader>bg")
 set encoding=utf-8
 set scrolloff=3
 set visualbell
-set ttyfast
 set ruler
+set backspace=indent,eol,start
+set display=lastline
 
 " Persistent undo
 if v:version >= 703
   set undofile
-  set undodir=$HOME/.vim/tmp,/tmp
+  set undodir=~/.vim/tmp,~/.tmp,~/tmp,~/var/tmp,/tmp
 endif
 
 "-----------------------------------------------------------------------------
@@ -72,19 +73,13 @@ set tabstop=2 shiftwidth=2 expandtab
 " Let me switch buffers with unsaved changes
 set hidden
 
-" Split windows/multiple files
-" use <Ctrl>+s to split the current window
-nmap <C-S> <C-W>s
-" use <Ctrl>+j/<Ctrl>+k to move up/down through split windows
-nmap <C-J> <C-W>j
-nmap <C-K> <C-W>k
-" use <Ctrl>+-/<Ctrl>+= to maximise/equalise the size of split windows
-nmap <C--> <C-W>_
-nmap <C-=> <C-W>=
 " use <Ctrl>+h/<Ctrl>+l to move back/forth through files:
 nmap <C-L> :bnext<CR>
 nmap <C-H> :bprev<CR>
 
+" use <Ctrl>+j/<Ctrl>+k to move up/down through split windows
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
 
 "-----------------------------------------------------------------------------
 " Folds and folding
