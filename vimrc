@@ -55,6 +55,9 @@ set incsearch
 set backupdir=~/.vim/tmp,~/.tmp,~/tmp,~/var/tmp,/tmp
 set directory=~/.vim/tmp,~/.tmp,~/tmp,~/var/tmp,/tmp
 
+" Don't make backups of temporary files (crontab in particular)
+set backupskip=/tmp/*,/private/tmp/*
+
 " If a file has been changed outside of Vim, reload it inside of Vim
 set autoread
 
