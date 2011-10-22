@@ -4,6 +4,7 @@ set mbox_type=Maildir
 set folder=$HOME/Mail
 set header_cache=~/.mutt/cache/headers
 set move = no # Don't move mail from the spool
+set mail_check = 0
 
 # Personal
 set realname="Sergey Kutserubov"

@@ -1,12 +1,12 @@
 .DS_Store
 .svn
 .Private
-vim/.netrwhist
-rtorrent.rc
 *~
 .*.swp
 *.bak
+vim/.netrwhist
 vim/bundle
 vim/spell
+vim/tmp
 mutt
 localrc
