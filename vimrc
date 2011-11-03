@@ -36,6 +36,9 @@ set ruler
 set backspace=indent,eol,start
 set display=lastline
 
+" Enable mouse in all modes
+set mouse=a
+
 " Persistent undo
 if v:version >= 703
   set undofile
@@ -111,6 +114,11 @@ nmap <C-E> :b#<CR>
 nmap <silent> <leader>vi :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+" OS X friendly copy and paste
+nmap <C-v> :r!pbpaste<CR>
+vmap <C-x> :!pbcopy<CR>
+vmap <C-c> :w !pbcopy<CR><CR>
+
 " Run current file if it has a shebang <F4> {{{
 " From: http://news.ycombinator.com/item?id=2908094
 function! <SID>CallInterpreter()
@@ -147,10 +155,3 @@ else
     set number
 endif
 " }}}
-
-"-----------------------------------------------------------------------------
-" Plug-ins
-"-----------------------------------------------------------------------------
-
-" Toggle the NERD Tree on an off with F7
-nmap <F7> :NERDTreeToggle<CR>
