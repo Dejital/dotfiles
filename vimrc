@@ -87,6 +87,9 @@ nmap <C-H> :bprev<CR>
 nmap <C-J> <C-W>j
 nmap <C-K> <C-W>k
 
+" Ctrl-E to switch between 2 last buffers
+nmap <C-E> :b#<CR>
+
 "-----------------------------------------------------------------------------
 " Folds and folding
 "-----------------------------------------------------------------------------
@@ -107,9 +110,6 @@ noremap  <buffer> <silent> j gj
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-" Ctrl-E to switch between 2 last buffers
-nmap <C-E> :b#<CR>
-
 " Access .vimrc with \vi
 nmap <silent> <leader>vi :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -129,7 +129,7 @@ function! <SID>CallInterpreter()
         echohl ErrorMsg | echo "Err: No shebang present in file, canceling execution" | echohl None
     endif
 endfun
-map <F4> :call <SID>CallInterpreter()<CR> 
+nmap <leader>sb :call <SID>CallInterpreter()<CR> 
 " }}}
 
 " Toggle line numbering modes \rn {{{
