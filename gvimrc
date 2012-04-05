@@ -5,7 +5,7 @@ set lines=40
 set columns=82
 
 " font-style and font-size
-set guifont=Inconsolata:h26
+set guifont=Inconsolata:h24
 
 " get rid of left scrollbar when splitting vertically
 set go-=l
