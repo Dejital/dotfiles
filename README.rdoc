@@ -1,7 +1,10 @@
 = Sergey Kutserubov's Dot Files
 
-These are the config files I use on my Mac OS X machine. Primarily, this is a fork of ryanb's dotfiles. However, I have recently begun using oh-my-zsh.
+These are the best config files you'll find (maybe). Big thanks to
+[ryanb](https://github.com/ryanb/dotfiles) for setting the stage.
 
-= Installation
+== Installation
 
-Git clone me, then rake install.
+  git clone git://github.com/ryanb/dotfiles ~/.dotfiles
+  cd ~/.dotfiles
+  rake install
