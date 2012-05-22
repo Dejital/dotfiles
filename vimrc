@@ -118,7 +118,7 @@ nmap <C-v> :r!pbpaste<CR>
 vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
 
-" Run current file if it has a shebang <F4> {{{
+" Run current file if it has a shebang \sb {{{
 " From: http://news.ycombinator.com/item?id=2908094
 function! <SID>CallInterpreter()
     if match(getline(1), '^\#!') == 0
