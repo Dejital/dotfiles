@@ -1,4 +1,5 @@
 set nocompatible
+filetype on
 filetype off
 
 "-----------------------------------------------------------------------------
@@ -19,8 +20,8 @@ filetype plugin indent on
 set t_Co=256
 
 " Solarized color scheme for vim and gvim
-colorscheme solarized 
-set background=dark
+"colorscheme solarized 
+"set background=dark
 
 " Toggle light and dark with \bg
 call togglebg#map("<leader>bg") 

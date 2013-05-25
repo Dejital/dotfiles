@@ -1,11 +1,11 @@
 " set the height of my window:
-set lines=40
+set lines=45
 
 " set the width:
-set columns=82
+set columns=86
 
 " font-style and font-size
-set guifont=Inconsolata:h24
+set guifont=Inconsolata:h22
 
 " get rid of left scrollbar when splitting vertically
 set go-=l
@@ -26,3 +26,6 @@ set guicursor+=o:hor50-Cursor
 set guicursor+=i-ci:ver25-Cursor
 set guicursor+=r-cr:hor20-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+
+colorscheme solarized 
+set background=dark

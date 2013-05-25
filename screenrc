@@ -1,16 +1,16 @@
 startup_message off
 
 # Just to make it absolutely clear...
-term screen-256color
+#term screen-256color
 
 # Clear out residual text from visual programs
 altscreen on
 
 # Autostart
-screen -t mutt 0 mutt
+#screen -t mutt 0 mutt
+screen -t zsh 0
 screen -t zsh 1
-screen -t zsh 2
-select 1
+select 0
 
 # My favorite hardstatus so far, modified from:
 # http://jeff.robbins.ws/reference/my-screenrc-file
