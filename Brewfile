@@ -29,6 +29,8 @@ brew 'fish'       # shell
 brew 'cmus'       # music player
 brew 'tig'        # git client
 brew 'pianobar'
+brew 'googler'    # CLI google
+brew 'sox'
 
 # Utilities
 cask 'flux'
@@ -53,8 +55,8 @@ cask 'disk-inventory-x'
 #cask 'steam'
 #cask 'visual-studio'     # not friendly with updates
 cask 'iterm2'
-cask 'boostnote'
-cask 'mtmr'               # my touchbar my rules
+#cask 'boostnote'
+#cask 'mtmr'               # my touchbar my rules
 
 # Games
 #cask 'openmw' # outdated cask
