@@ -5,7 +5,7 @@ set lines=45
 set columns=86
 
 " font-style and font-size
-set guifont=Inconsolata:h22
+set guifont=Inconsolata:h18
 
 " get rid of left scrollbar when splitting vertically
 set go-=l
@@ -27,5 +27,6 @@ set guicursor+=i-ci:ver25-Cursor
 set guicursor+=r-cr:hor20-Cursor
 set guicursor+=sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
-colorscheme solarized 
-set background=dark
+"colorscheme solarized 
+"set background=dark
+colorscheme wombat

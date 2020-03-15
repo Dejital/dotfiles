@@ -2,12 +2,14 @@ set nocompatible
 filetype on
 filetype off
 
+color slate
+
 "-----------------------------------------------------------------------------
 " Pathogen: http://www.vim.org/scripts/script.php?script_id=2332
 " This needs to occur after filetype off and before filetype plugin on
 "-----------------------------------------------------------------------------
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
 
 syntax on
 filetype plugin indent on
@@ -18,13 +20,6 @@ filetype plugin indent on
 
 " 256 color terminal with iTerm
 set t_Co=256
-
-" Solarized color scheme for vim and gvim
-"colorscheme solarized 
-"set background=dark
-
-" Toggle light and dark with \bg
-call togglebg#map("<leader>bg") 
 
 "-----------------------------------------------------------------------------
 " Encoding and general usability
@@ -70,7 +65,7 @@ set autoread
 "-----------------------------------------------------------------------------
 
 set smartindent 
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=2 shiftwidth=2 expandtab
 
 "-----------------------------------------------------------------------------
 " Buffers
@@ -83,20 +78,6 @@ set hidden
 nmap <C-L> :bnext<CR>
 nmap <C-H> :bprev<CR>
 
-" use <Ctrl>+j/<Ctrl>+k to move up/down through split windows
-nmap <C-J> <C-W>j
-nmap <C-K> <C-W>k
-
-" Ctrl-E to switch between 2 last buffers
-nmap <C-E> :b#<CR>
-
-"-----------------------------------------------------------------------------
-" Folds and folding
-"-----------------------------------------------------------------------------
-
-set foldcolumn=0
-set foldmethod=marker "alternatives: indent, syntax, marker
-
 "-----------------------------------------------------------------------------
 " Keymap stuff
 "-----------------------------------------------------------------------------
@@ -107,9 +88,6 @@ nnoremap <Space> :
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
 " Access .vimrc with \vi
 nmap <silent> <leader>vi :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -118,19 +96,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <C-v> :r!pbpaste<CR>
 vmap <C-x> :!pbcopy<CR>
 vmap <C-c> :w !pbcopy<CR><CR>
-
-" Run current file if it has a shebang \sb {{{
-" From: http://news.ycombinator.com/item?id=2908094
-function! <SID>CallInterpreter()
-    if match(getline(1), '^\#!') == 0
-        let l:interpreter = getline(1)[2:]
-        exec ("!".l:interpreter." %:p")
-    else
-        echohl ErrorMsg | echo "Err: No shebang present in file, canceling execution" | echohl None
-    endif
-endfun
-nmap <leader>sb :call <SID>CallInterpreter()<CR> 
-" }}}
 
 " Toggle line numbering modes \rn {{{
 " Default to relativenumber in newer vim, otherwise regular numbering
@@ -155,15 +120,3 @@ else
     set number
 endif
 " }}}
-
-"-----------------------------------------------------------------------------
-" Filetypes
-"-----------------------------------------------------------------------------
-
-" The only way I can get markdown files to work properly in vim
-autocmd BufNewFile,BufRead *.markdown,*.md,*.mdown,*.mkd,*.mkdn
-      \ if &ft =~# '^\%(conf\|modula2\)$' |
-      \   set ft=markdown |
-      \ else |
-      \   setf markdown |
-      \ endif

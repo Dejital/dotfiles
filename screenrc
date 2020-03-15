@@ -1,18 +1,24 @@
+# default shell
+shell -/usr/local/bin/fish
 startup_message off
+defutf8 on
 
 # Just to make it absolutely clear...
-#term screen-256color
+term screen-256color
 
 # Clear out residual text from visual programs
 altscreen on
 
 # Autostart
 #screen -t mutt 0 mutt
-screen -t zsh 0
-screen -t zsh 1
+screen -t 0
+screen -t 1
 select 0
 
 # My favorite hardstatus so far, modified from:
 # http://jeff.robbins.ws/reference/my-screenrc-file
 hardstatus alwayslastline
 hardstatus string '%{= g0}[%= %?%-Lw%?(%n*%f%t%?(%u)%?)%?%+Lw%?%?%= ][ %m/%d %c ]'
+
+#hardstatus alwayslastline "%{= g0} %-w%{+bu I}%n-%t%{-}%+w %= %{+ b}%11` %{-}%D %LM %d %{+b I}%c "
+
